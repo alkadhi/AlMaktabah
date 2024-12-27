@@ -4,6 +4,9 @@ body{
     background-color: #000F08;
     overflow: hidden;
 
+    font-family: "Amiri Regular";
+    color: antiquewhite;
+
 }
 
 @font-face {
@@ -20,5 +23,28 @@ body{
 
     text-align: center;
     color: #F6AA1C;
+
+}
+
+.container{
+
+    display: flex;
+    flex-direction: row;
+
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.container .file-list{
+
+    padding: 5dvw;
+    background-color: #F6AA1C;
+
+}
+
+.container .file-list ul{
+
+    list-style: none;
 
 }
