@@ -38,6 +38,12 @@ ipcMain.on('open-about-window', () => {
   aboutWindow.loadFile('SHEETS/about.html');  // Or use loadFile() to load a local HTML file
 });
 
+
+ipcMain.on('open-input', () => {
+    mainWindow.loadFile("SHEETS/inputFile.html");
+});
+
+
 app.whenReady().then(() => {
   createWindow();
 

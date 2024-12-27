@@ -1,0 +1,24 @@
+body{
+
+    margin: 0;
+    background-color: #000F08;
+    overflow: hidden;
+
+}
+
+@font-face {
+    font-family: "Amiri Regular";
+    src: url(FONTS/Amiri/Amiri-Regular.ttf);
+}
+  
+.header{
+
+    font-family: "Amiri Regular";
+    padding: 20px;
+    background-color: #004BA8;
+    -webkit-app-region: drag;
+
+    text-align: center;
+    color: #F6AA1C;
+
+}
