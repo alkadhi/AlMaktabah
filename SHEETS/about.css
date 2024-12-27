@@ -1,0 +1,63 @@
+body{
+
+    margin: 0;
+    background-color: #000F08;
+    overflow: hidden;
+
+    color: antiquewhite;
+    font-family: "SF Arabic", "Traditional Arabic", "Noto Nakash Arabic";
+
+}
+
+@font-face {
+    font-family: "Amiri Regular";
+    src: url(FONTS\Amiri\Amiri-Regular.ttf);
+}
+
+.header{
+
+    padding: 20px;
+    background-color: #004BA8;
+    -webkit-app-region: drag;
+
+    text-align: center;
+    color: #F6AA1C;
+
+}
+
+.container{
+
+    display: flex;
+    flex-direction: row;
+
+    padding: 10%;
+
+}
+
+.container .name-container{
+
+    font-size: 2dvw;
+
+}
+
+.container .space-container{
+
+    margin: 5dvw;
+
+}
+
+.container .info-container{
+
+
+    padding-top: 15%;
+    font-size: 3dvw;
+
+}
+
+
+.container .info-container .info-space{
+
+
+    margin-top: 50px;
+
+}

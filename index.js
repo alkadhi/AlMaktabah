@@ -1,15 +1,56 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
 
-const createWindow = () => {
-  const win = new BrowserWindow({
+let mainWindow;
+
+function createWindow() {
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    frame: false
-  })
-  
-  win.loadFile('index.html')
+    frame: false,
+
+    webPreferences: {
+      nodeIntegration: false, // Use 'false' for security reasons
+      preload: path.join(__dirname, 'preload.js')  // Preload script if needed
+    }
+  });
+
+  mainWindow.loadFile('index.html'); // Or loadFile() for local files
 }
 
+// Listen for the open window event (can be triggered by IPC)
+ipcMain.on('open-about-window', () => {
+  // Create a new window
+  const aboutWindow = new BrowserWindow({
+    width: 600,
+    height: 400,
+    resizable: false,
+    skipTaskbar: true,
+    frame: false,
+
+    webPreferences: {
+      nodeIntegration: false, // Use 'false' for security reasons
+      preload: path.join(__dirname, 'preload.js')  // Preload script if needed
+    }
+  });
+
+  // Load the content for the new window
+  aboutWindow.loadFile('SHEETS/about.html');  // Or use loadFile() to load a local HTML file
+});
+
 app.whenReady().then(() => {
-   createWindow()
-})
+  createWindow();
+
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
+
+  app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+      app.quit();
+    }
+  });
+
+});
