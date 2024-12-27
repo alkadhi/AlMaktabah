@@ -1,0 +1,38 @@
+{
+  "name": "almaktabah",
+  "version": "1.0.0",
+  "description": "an Arabic IDE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "arabic",
+    "IDE",
+    "ide",
+    "new",
+    "york",
+    "chicago",
+    "world",
+    "peace",
+    "palestine",
+    "Palestine",
+    "Yemen",
+    "Teiman",
+    "yemen",
+    "teiman",
+    "alhurrah",
+    "ALHURRAH",
+    "AlHurrah",
+    "Al-Hurrah",
+    "al-hurrah",
+    "al",
+    "hurrah"
+  ],
+  "author": "Khaled \"alkadhi\" Mohammed",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^33.2.1"
+  }
+}

@@ -1,0 +1,131 @@
+body{
+
+    margin: 0;
+    background-color: #000F08;
+    overflow: hidden;
+
+}
+
+@font-face {
+    font-family: "Amiri Regular";
+    src: url(FONTS/Amiri/Amiri-Regular.ttf);
+}
+  
+.header{
+
+    font-family: "Amiri Regular";
+    padding: 20px;
+    background-color: #004BA8;
+    -webkit-app-region: drag;
+
+    text-align: center;
+    color: #F6AA1C;
+
+}
+
+.container{
+
+    display: flex;
+    flex-direction: row;
+
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.container .file-list{
+
+    padding: 5dvw;
+    background-color: #F6AA1C;
+
+}
+
+.container .file-list ul{
+
+    list-style: none;
+
+}
+
+.container .splash-functions{
+
+    
+    padding: 7dvw;
+    display: flex;
+
+    flex-direction: row;
+
+}
+
+.container .splash-functions .space-splash{
+
+    padding: 10vw;
+
+}
+
+.container .splash-functions .splash-project-functions ul{
+
+    list-style: none;
+
+}
+
+.container .splash-functions .splash-project-functions button{
+
+    margin-bottom: 20px;
+
+    border: none;
+    background-color: transparent;
+
+    color: antiquewhite;
+
+    font-family: "Amiri Regular";
+    font-size: 30px;
+
+}
+
+.container .splash-functions .splash-project-functions button:hover{
+
+    margin-bottom: 20px;
+
+    border: none;
+    background-color: #004BA8;
+
+    color: antiquewhite;
+
+    font-family: "Amiri Regular";
+    font-size: 30px;
+
+}
+
+.container .splash-functions .splash-program-functions ul{
+
+    list-style: none;
+
+}
+
+.container .splash-functions .splash-program-functions button{
+
+    margin-bottom: 20px;
+
+    border: none;
+    background-color: transparent;
+
+    color: antiquewhite;
+
+    font-family: "Amiri Regular";
+    font-size: 20px;
+
+}
+
+.container .splash-functions .splash-program-functions button:hover{
+
+    margin-bottom: 20px;
+
+    border: none;
+    background-color: #004BA8;
+
+    color: antiquewhite;
+
+    font-family: "Amiri Regular";
+    font-size: 20px;
+
+}
