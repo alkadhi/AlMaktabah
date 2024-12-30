@@ -15,7 +15,7 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadFile('index.html'); // Or loadFile() for local files
+  mainWindow.loadFile(path.join(__dirname, 'SHEETS/workspace.html')); // Or loadFile() for local files
 }
 
 // Listen for the open window event (can be triggered by IPC)
@@ -35,12 +35,12 @@ ipcMain.on('open-about-window', () => {
   });
 
   // Load the content for the new window
-  aboutWindow.loadFile('SHEETS/about.html');  // Or use loadFile() to load a local HTML file
+  aboutWindow.loadFile(path.join(__dirname, 'SHEETS/about.html'));  // Or use loadFile() to load a local HTML file
 });
 
 
 ipcMain.on('open-input', () => {
-    mainWindow.loadFile("SHEETS/inputFile.html");
+    mainWindow.loadFile(path.join(__dirname, "SHEETS/inputFile.html"));
 });
 
 
