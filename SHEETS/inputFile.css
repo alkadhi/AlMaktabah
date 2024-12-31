@@ -26,48 +26,94 @@ body{
 
 }
 
-.container{
+.file-container{
 
     display: flex;
     flex-direction: row;
 
     height: 100vh;
     width: 100vw;
-}
-
-.container .file-list{
-
-    padding: 5dvw;
-    background-color: #F6AA1C;
 
 }
 
-.container .file-list ul{
-
-    list-style: none;
-
-}
-
-.container .input-container{
+.file-container .input-container{
 
     padding: 50px;
 
 }
 
-.container .input{
+.file-container .input{
 
     width: 100%;
 
 }
 
-.container .input #fileLoc{
+.file-container .input #fileLoc{
 
     width: 80%;
 
 }
 
-.container .input button{
+.file-container .input label{
 
-    width: 15%;
+    padding: 10px;
+
+    font-family: "Amiri Regular";
+
+    border-style: none;
+    background-color: transparent;
+    color: whitesmoke;
+
+    font-size: medium;
+
+}
+
+.file-container .input label:hover{
+
+    padding: 10px;
+
+    font-family: "Amiri Regular";
+
+    border-style: none;
+    background-color: #004BA8;
+    color: black;
+
+    font-size: medium;
+
+}
+
+button{
+
+    margin-top: 5px;
+    width: 100%;
+
+    font-family: "Amiri Regular";
+
+    border-style: none;
+    background-color: transparent;
+    color: whitesmoke;
+
+    font-size: medium;
+
+}
+
+button:hover{
+
+    margin-top: 5px;
+    width: 100%;
+
+    font-family: "Amiri Regular";
+
+    border-style: none;
+    background-color:  #004BA8;
+    color: black;
+
+    font-size: medium;
+
+}
+
+input[type="file"]{
+
+    display: none;
 
 }

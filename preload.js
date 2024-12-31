@@ -5,5 +5,9 @@ contextBridge.exposeInMainWorld('electron', {
   openAboutWindow: () => ipcRenderer.send('open-about-window'),
   openInputFile: () => ipcRenderer.send('open-input'),
 
-  saveFileBtn: (fileLoc, content) => ipcRenderer.send("save-file", fileLoc, content)
+  saveFileBtn: (fileLoc, content) => ipcRenderer.send("save-file", fileLoc, content),
+
+  showDialog: (msg) => ipcRenderer.send("show-msg", msg),
+
+  getFile: () => getFile()
 });

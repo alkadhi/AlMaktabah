@@ -1,6 +1,8 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, webUtils, ipcRenderer } = require('electron');
 const path = require('path');
-const fs = require("fs")
+const fs = require("fs");
+
+fileLoc = require('./SCRIPT/workspaceRender');
 
 let mainWindow;
 
@@ -16,7 +18,7 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadFile(path.join(__dirname, 'SHEETS/workspace.html')); // Or loadFile() for local files
+  mainWindow.loadFile(path.join(__dirname, 'index.html')); // Or loadFile() for local files
 }
 
 // Listen for the open window event (can be triggered by IPC)
@@ -41,11 +43,34 @@ ipcMain.on('open-about-window', () => {
 
 
 ipcMain.on('open-input', () => {
-    mainWindow.loadFile(path.join(__dirname, "SHEETS/inputFile.html"));
+    mainWindow.loadFile(path.join(__dirname, "SHEETS/workspace.html"));
 });
 
 ipcMain.on('save-file', (event, fileLoc, content) => {
   console.log(fileLoc);
+});
+
+ipcMain.on('show-msg', (event, msg) => {
+  const options = {
+    type: 'warning',
+    buttons: ['Okay'],
+    defaultId: 0,
+    title: 'Warning',
+    message: msg,
+    detail: ''
+  };
+
+  dialog.showMessageBox(options);
+});
+
+ipcMain.on('get-file-path', (event) => {
+
+  console.log("hello2");
+  dialog.showOpenDialog({
+        properties: ['openFile']
+  }).then(files => {
+    fileLoc = files.filePaths[0];
+  });
 });
 
 
