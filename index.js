@@ -1,8 +1,8 @@
 const { app, BrowserWindow, ipcMain, dialog, webUtils, ipcRenderer } = require('electron');
 const path = require('path');
 const fs = require("fs");
-
-fileLoc = require('./SCRIPT/workspaceRender');
+const { emit } = require('process');
+const { error } = require('console');
 
 let mainWindow;
 
@@ -13,8 +13,9 @@ function createWindow() {
     frame: false,
 
     webPreferences: {
-      nodeIntegration: false, // Use 'false' for security reasons
-      preload: path.join(__dirname, 'preload.js')  // Preload script if needed
+      nodeIntegration: true, // Use 'false' for security reasons
+      contextIsolation: false,
+      //preload: path.join(__dirname, 'preload.js')  // Preload script if needed
     }
   });
 
@@ -33,7 +34,7 @@ ipcMain.on('open-about-window', () => {
 
     webPreferences: {
       nodeIntegration: false, // Use 'false' for security reasons
-      preload: path.join(__dirname, 'preload.js')  // Preload script if needed
+      //preload: path.join(__dirname, 'preload.js')  // Preload script if needed
     }
   });
 
@@ -47,7 +48,12 @@ ipcMain.on('open-input', () => {
 });
 
 ipcMain.on('save-file', (event, fileLoc, content) => {
-  console.log(fileLoc);
+  fs.writeFile(fileLoc, content, (err) => {
+    if (err){
+      console.log("err");
+      ipcRenderer.send("show-msg", "لا يمكن الحفظ");
+    }
+  });
 });
 
 ipcMain.on('show-msg', (event, msg) => {
@@ -55,7 +61,7 @@ ipcMain.on('show-msg', (event, msg) => {
     type: 'warning',
     buttons: ['Okay'],
     defaultId: 0,
-    title: 'Warning',
+    title: 'تنبيه',
     message: msg,
     detail: ''
   };
@@ -63,16 +69,14 @@ ipcMain.on('show-msg', (event, msg) => {
   dialog.showMessageBox(options);
 });
 
-ipcMain.on('get-file-path', (event) => {
-
+ipcMain.on('get-file-location', (event) => {
   console.log("hello2");
   dialog.showOpenDialog({
         properties: ['openFile']
   }).then(files => {
-    fileLoc = files.filePaths[0];
+    event.sender.send("file-save-found", files.filePaths[0]);
   });
 });
-
 
 app.whenReady().then(() => {
   createWindow();

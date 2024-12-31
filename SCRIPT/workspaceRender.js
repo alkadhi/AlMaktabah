@@ -1,18 +1,26 @@
-export var fileLoc;
+const {ipcRenderer, ipcMain} = require("electron");
+let fileLoc;
 
 document.getElementById("saveBtn").addEventListener("click", () => {
 
     if (fileLoc == undefined){
-
-        window.electron.showDialog("لم تختر بقعة للحفظ");
-
+        ipcRenderer.send("show-msg", "لم تختر بقعة للحفظ");
     } else {
-        window.electron.saveFileBtn(fileLoc, document.getElementById("code-area").value);
+        ipcRenderer.send("save-file", fileLoc, document.getElementById("code-area").value);
     }
+
 });
 
 document.getElementById("file-upload").addEventListener("click", (event) => {
 
-    console.log(getFile());
+    ipcRenderer.send("get-file-location");
     
+});
+
+ipcRenderer.on("file-save-found", (event, fileLocation) => {
+    
+    fileLoc = fileLocation
+
+    document.getElementById("file-loc-display").textContent = fileLoc;
+
 });
