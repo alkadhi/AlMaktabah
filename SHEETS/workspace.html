@@ -9,24 +9,25 @@
 <body>
     
     <div class="header">
+
     </div>
 
     <div class="container">
 
         <div class="file-list">
 
+
             <h1>
 
-                الملفات
+                الملف
 
             </h1>
 
-            <ul>
-                <li>
-                    <p1>text</p1>
-                </li>
-
-            </ul>
+            <input id="file-loc", type="file">
+            
+            <label for="file-loc" id="file-upload">
+                مكان الملف
+            </label>
 
         </div>
 
@@ -36,23 +37,24 @@
 
                 <ul>
                     <li>
-                        <button>القراة</button>
+                        <button id="executeBtn">القراة</button>
                     </li>
 
                     <li>
-                        <button>الحفظ</button>
+                        <button id="saveBtn">الحفظ</button>
                     </li>
 
                     <li>
-                        <button>الاعدادات</button>
+                        <button id="settingsBtn">الاعدادات</button>
                     </li>
 
                 </ul>
+
             </div>
 
             <div class="text-area">
 
-                <textarea> </textarea>
+                <textarea id="code-area"> </textarea>
 
             </div>
 
@@ -60,5 +62,6 @@
 
     </div>
 
+    <script src="../SCRIPT/workspaceRender.js"></script>
 </body>
 </html>

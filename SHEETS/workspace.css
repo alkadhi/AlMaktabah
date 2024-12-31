@@ -42,9 +42,39 @@ ul{
 
 .container .file-list{
 
-    padding-left: 10dvw;
-    padding-right: 15px;
     background-color: #F6AA1C;
+}
+
+.container .file-list h1{
+
+    padding-left: 10dvw;
+    padding-right: 10px;
+    background-color: #F6AA1C;
+
+}
+
+.container .file-list input[type="file"]{
+
+    display: none;
+
+}
+
+.container .file-list #file-upload{
+
+    color: black;
+    background-color: #004BA8;
+
+    padding-left: 5px;
+    padding-right: 20px;
+
+    font-size: medium;
+
+}
+
+.container .file-list #file-upload:hover{
+
+    color: whitesmoke;
+    background-color: #000F08;
 
 }
 
@@ -74,7 +104,7 @@ ul{
 .workspace .buttons-for-functions li button{
 
     font-family: "Amiri Regular";
-    font-size: large;
+    font-size: larger;
 
     padding-left: 100%;
 
@@ -86,7 +116,7 @@ ul{
 .workspace .buttons-for-functions li button:hover{
 
     font-family: "Amiri Regular";
-    font-size: large;
+    font-size: larger;
 
     padding-left: 100%;
 
@@ -103,6 +133,10 @@ ul{
 
 }
 
+.workspace .text-area textarea::-webkit-scrollbar{
+    display: none;
+}
+
 .workspace .text-area textarea{
 
     border-style: none;
@@ -111,7 +145,6 @@ ul{
     color: whitesmoke;
     resize: none;
     
-    overflow: hidden;
     width: 100%;
     height: 100%;
 

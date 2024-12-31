@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const fs = require("fs")
 
 let mainWindow;
 
@@ -41,6 +42,10 @@ ipcMain.on('open-about-window', () => {
 
 ipcMain.on('open-input', () => {
     mainWindow.loadFile(path.join(__dirname, "SHEETS/inputFile.html"));
+});
+
+ipcMain.on('save-file', (event, fileLoc, content) => {
+  console.log(fileLoc);
 });
 
 
