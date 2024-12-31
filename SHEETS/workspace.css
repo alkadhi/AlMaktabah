@@ -4,6 +4,18 @@ body{
     background-color: #000F08;
     overflow: hidden;
 
+    font-family: "Amiri Regular";
+}
+
+@font-face {
+    font-family: "Amiri Regular";
+    src: url(FONTS/Amiri/Amiri-Regular.ttf);
+}
+
+ul{
+
+    list-style: none;
+
 }
 
 .header{
@@ -31,12 +43,76 @@ body{
 .container .file-list{
 
     padding-left: 10dvw;
+    padding-right: 15px;
     background-color: #F6AA1C;
 
 }
 
-.container .file-list ul{
+.workspace{
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.workspace .buttons-for-functions ul{
 
     list-style: none;
+    margin-left: 40px;
+    margin-right: -5px;
+}
+
+.workspace .buttons-for-functions li{
+
+    padding-bottom: 17px;
+
+}
+
+.workspace .buttons-for-functions li button{
+
+    font-family: "Amiri Regular";
+    font-size: large;
+
+    padding-left: 100%;
+
+    border-style: none;
+    background-color: transparent;
+    color: whitesmoke;
+}
+
+.workspace .buttons-for-functions li button:hover{
+
+    font-family: "Amiri Regular";
+    font-size: large;
+
+    padding-left: 100%;
+
+    border-style: none;
+    background-color: #004BA8;
+    color: black;
+}
+
+.workspace .text-area{
+
+    margin-top: 5px;
+    width: 100%;
+    height: 90vh;
+
+}
+
+.workspace .text-area textarea{
+
+    border-style: none;
+    outline-style: none;
+    background-color: transparent;
+    color: whitesmoke;
+    resize: none;
+    
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
 
 }
