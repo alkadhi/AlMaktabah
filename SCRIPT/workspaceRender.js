@@ -22,6 +22,14 @@ document.getElementById("file-upload").addEventListener("click", (event) => {
     
 });
 
+
+document.getElementById("executeBtn").addEventListener("click", (event) => {
+
+    ipcRenderer.send("execute-file");
+
+});
+
+
 ipcRenderer.on("file-save-found", (event, fileLocation) => {
     
     fileLoc = fileLocation
@@ -35,3 +43,5 @@ ipcRenderer.on("file-save-data", (event, data) => {
     document.getElementById("code-area").textContent = data;
 
 });
+
+

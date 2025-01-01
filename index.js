@@ -70,7 +70,7 @@ ipcMain.on('save-file', (event, fileLoc, content) => {
 ipcMain.on('show-msg', (event, msg) => {
   const options = {
     type: 'warning',
-    buttons: ['Okay'],
+    buttons: ['فهمت'],
     defaultId: 0,
     title: 'تنبيه',
     message: msg,
@@ -91,7 +91,7 @@ ipcMain.on('get-file-location', (event) => {
     if (!(files.filePaths[0].match(".ah"))){
       const options = {
         type: 'error',
-        buttons: ['Okay'],
+        buttons: ['فهمت'],
         defaultId: 0,
         title: 'تنبيه',
         message: "يتقبل فقط الملفات الحرة",
@@ -105,7 +105,7 @@ ipcMain.on('get-file-location', (event) => {
         console.log("err");
         const options = {
           type: 'warning',
-          buttons: ['Okay'],
+          buttons: ['فهمت'],
           defaultId: 0,
           title: 'تنبيه',
           message: "لا يمكن القراة",
@@ -120,6 +120,23 @@ ipcMain.on('get-file-location', (event) => {
 
     event.sender.send("file-save-found", files.filePaths[0]);
   }});
+});
+
+ipcMain.on("execute-file", (event) => {
+
+  console.log("NOT IMPLEMENTED");
+  console.log("err");
+        const options = {
+          type: 'error',
+          buttons: ['فهمت'],
+          defaultId: 0,
+          title: 'تنبيه',
+          message: "لا يمكن القراة",
+          detail: ''
+        };
+      
+        dialog.showMessageBox(options);
+
 });
 
 app.whenReady().then(() => {
