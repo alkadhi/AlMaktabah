@@ -19,7 +19,7 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadFile(path.join(__dirname, 'index.html')); // Or loadFile() for local files
+  mainWindow.loadFile(path.join(__dirname, 'SHEETS/workspace.html')); // Or loadFile() for local files
 }
 
 // Listen for the open window event (can be triggered by IPC)
@@ -48,12 +48,23 @@ ipcMain.on('open-input', () => {
 });
 
 ipcMain.on('save-file', (event, fileLoc, content) => {
+
   fs.writeFile(fileLoc, content, (err) => {
     if (err){
       console.log("err");
-      ipcRenderer.send("show-msg", "لا يمكن الحفظ");
+      const options = {
+        type: 'warning',
+        buttons: ['Okay'],
+        defaultId: 0,
+        title: 'تنبيه',
+        message: "لا يمكن الحفظ",
+        detail: ''
+      };
+    
+      dialog.showMessageBox(options);
     }
   });
+
 });
 
 ipcMain.on('show-msg', (event, msg) => {
@@ -70,12 +81,45 @@ ipcMain.on('show-msg', (event, msg) => {
 });
 
 ipcMain.on('get-file-location', (event) => {
-  console.log("hello2");
   dialog.showOpenDialog({
-        properties: ['openFile']
+        properties: ['openFile'],
+        filters: [
+          { name: 'ALHURRAH FILE', extensions: ['ah'] },
+      ]      
   }).then(files => {
+    
+    if (!(files.filePaths[0].match(".ah"))){
+      const options = {
+        type: 'error',
+        buttons: ['Okay'],
+        defaultId: 0,
+        title: 'تنبيه',
+        message: "يتقبل فقط الملفات الحرة",
+        detail: ''
+      };
+    
+      dialog.showMessageBox(options);
+    } else {
+    fs.readFile(files.filePaths[0], "utf-8", (err, data) => {
+      if (err){
+        console.log("err");
+        const options = {
+          type: 'warning',
+          buttons: ['Okay'],
+          defaultId: 0,
+          title: 'تنبيه',
+          message: "لا يمكن القراة",
+          detail: ''
+        };
+      
+        dialog.showMessageBox(options);
+      } else {
+        event.sender.send("file-save-data", data);
+      }
+    });
+
     event.sender.send("file-save-found", files.filePaths[0]);
-  });
+  }});
 });
 
 app.whenReady().then(() => {

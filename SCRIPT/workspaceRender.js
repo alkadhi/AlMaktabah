@@ -6,7 +6,12 @@ document.getElementById("saveBtn").addEventListener("click", () => {
     if (fileLoc == undefined){
         ipcRenderer.send("show-msg", "لم تختر بقعة للحفظ");
     } else {
+
+        
+
         ipcRenderer.send("save-file", fileLoc, document.getElementById("code-area").value);
+
+
     }
 
 });
@@ -22,5 +27,11 @@ ipcRenderer.on("file-save-found", (event, fileLocation) => {
     fileLoc = fileLocation
 
     document.getElementById("file-loc-display").textContent = fileLoc;
+
+});
+
+ipcRenderer.on("file-save-data", (event, data) => {
+    
+    document.getElementById("code-area").textContent = data;
 
 });
